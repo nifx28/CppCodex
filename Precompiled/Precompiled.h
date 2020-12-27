@@ -8,6 +8,7 @@
 
 // C++ 標準函式庫。
 #include <iostream>
+#include <vector>
 #include <array>
 #include <sstream>
 

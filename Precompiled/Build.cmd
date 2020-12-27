@@ -20,6 +20,7 @@ echo.
 cl.exe || goto error
 cls
 GreatPyramid.exe
+rem < PyramidTester.txt
 :error
 pause
 goto repeat
