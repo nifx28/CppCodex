@@ -24,10 +24,26 @@ int wmain(int argc, wchar_t **argv)
     vector<num> lines;
     wcout << L"請輸入金字塔高度：";
 
-    for (num pyH; wcin.getline(&pyH[0], 4); ) // 最多輸入 3 個數字，加上 1 個換行。
+    while (!wcin.eof())
     {
-        lines.push_back(pyH);
+        num pyH;
+        wcin.getline(&pyH[0], 4); // 最多輸入 3 個數字，加上 1 個換行。
+
+        if (!wcin.fail())
+        {
+            if (*(&pyH[0]) != L'#') // # 開頭為註解。
+            {
+                lines.push_back(pyH);
+            }
+        }
+        else // 超過三個字報錯。
+        {
+            wcin.clear(); // 清除 failbit。
+            wcin.ignore(numeric_limits<streamsize>::max(), ENDL); // 超過三個字無法擷取，忽略。
+        }
     }
+
+    wcout << wstring(2, ENDL);
 
     for (num& pyH : lines)
     {
@@ -36,7 +52,7 @@ int wmain(int argc, wchar_t **argv)
         ss << &pyH[0];
         ss >> num;
 
-        wcout << L"已輸入：" << num << ENDL;
+        wcout << L"已輸入：" << num << ENDL << ENDL;
 
         int numMax = num * 2;
 
@@ -44,5 +60,7 @@ int wmain(int argc, wchar_t **argv)
         {
             print(static_cast<size_t>(i + 1 > num ? num - (i - num) : i));
         }
+
+        wcout << ENDL;
     }
 }

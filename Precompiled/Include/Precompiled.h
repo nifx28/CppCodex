@@ -23,6 +23,7 @@
 // 只引用必要的 <Windows.h> 內建標頭。
 // "C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\"
 #define WIN32_LEAN_AND_MEAN
+#define NOMINMAX
 #include <Windows.h>
 
 // 結束：只要是標準函式庫裡面的錯誤，一律忽略。
