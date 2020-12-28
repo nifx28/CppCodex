@@ -22,7 +22,7 @@ void setmode(int mode)
 /*
  * 印出金字塔。
  */
-void print(size_t num)
+void print(size_t num, size_t offset)
 {
-    wcout << wstring(num, L'*') << ENDL;
+    wcout << wstring(offset, L' ') << wstring(num, L'*') << ENDL;
 }

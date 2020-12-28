@@ -1,6 +1,6 @@
 # 金字塔建築師。
 
-此專案使用先行編譯標頭檔 (Precompiled.pch)。
+此專案使用先行編譯標頭檔 (vc140.pch)。
 
 預期要在重新導向來自動輸入金字塔高度 `GreatPyramid.exe < PyramidTester.txt`
 ```
@@ -29,3 +29,7 @@ GreatPyramid.cpp(1): warning C4819: 檔案含有無法在目前字碼頁 (950) �
 這就是為何開放原始碼的跨平台函式庫，出現一堆這類錯誤在 Windows 平台上。
 
 ![GreatPyramid](GreatPyramid.png "GreatPyramid")
+
+改版成為金字塔樹。
+
+![PyramidTree](PyramidTree.png "PyramidTree")

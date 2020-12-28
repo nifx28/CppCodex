@@ -54,11 +54,24 @@ int wmain(int argc, wchar_t **argv)
 
         wcout << L"已輸入：" << num << ENDL << ENDL;
 
-        int numMax = num * 2;
+        int numWidth = num + 6, numDouble = num * 2, numHalf = num / 2;
+        int tree = 5, offset = 6;
 
-        for (int i = 1; i < numMax; i++)
+        for (int i = 1; i < numWidth; i++)
         {
-            print(static_cast<size_t>(i + 1 > num ? num - (i - num) : i));
+            if (i < num)
+            {
+                print(static_cast<size_t>(i * 2 - 1), static_cast<size_t>(offset + numHalf - (i - numHalf)));
+            }
+            else
+            {
+                if (i + 2 >= numWidth)
+                {
+                    tree += 2;
+                }
+
+                print(static_cast<size_t>(tree), static_cast<size_t>(offset + (numDouble - tree) / 2 - 1));
+            }
         }
 
         wcout << ENDL;

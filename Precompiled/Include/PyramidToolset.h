@@ -16,7 +16,7 @@ void setmode(int mode);
 extern  "C" {
 #endif
 
-void print(size_t num);
+void print(size_t num, size_t offset = 0);
 
 // 結束：給 C 呼叫的函式，不支援 C++ 的函式裝飾方式。
 #ifdef __cplusplus
