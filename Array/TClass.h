@@ -22,20 +22,23 @@ namespace main
         {
             tostringstream oss;
             size_t pos = 0;
+            int *offset = nullptr;
 
             if (ptr > 0)
             {
-                pos = static_cast<size_t>(((long long)&obj - ptr) / 40);
+                pos = static_cast<size_t>((reinterpret_cast<long long>(&obj) - ptr) / 40);
                 oss << pos;
             }
             else
             {
-                ptr = (long long)&obj;
+                ptr = reinterpret_cast<long long>(&obj);
                 oss << ptr;
             }
 
             //return os << oss.str();
-            return os << obj[pos];
+            //return os << obj[pos];
+            offset = reinterpret_cast<int*>(ptr + static_cast<int>(pos * 4));
+            return os << *offset;
         }
 
     public:

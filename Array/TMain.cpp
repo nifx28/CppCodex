@@ -5,6 +5,7 @@
 #include "TMain.h"
 #include "TClass.h"
 
+#define USE_TCLASS // 陣列與指標比較，使用類別模擬。
 #define ARRAY_SIZE 10
 
 using namespace std;
@@ -22,8 +23,10 @@ int _tmain(int argc, _TCHAR **argv, _TCHAR **envp)
     ios::sync_with_stdio(false), tcin.tie(nullptr);
 
     int a[ARRAY_SIZE] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-    /*int *p = nullptr;
-    p = a;*/
+#ifndef USE_TCLASS
+    int *p = nullptr;
+    p = a;
+#endif
 
     /* 亂數排序陣列元素。 */
     array<int, ARRAY_SIZE> list;
@@ -32,9 +35,10 @@ int _tmain(int argc, _TCHAR **argv, _TCHAR **envp)
     shuffle(list.begin(), list.end(), default_random_engine(seed()));
     copy(begin(list), end(list), begin(a));
 
+#ifdef USE_TCLASS
     TClass<int, ARRAY_SIZE> *p = nullptr;
     p = new TClass<int, ARRAY_SIZE>(a);
-    tcout << _T('\n');
+#endif
 
     tcout << _T("p[] = { ") << p[0] << _T(", ") << p[1] << _T(", ") << p[2] << _T(", ") << p[3] << _T(", ") << p[4] << _T(", ") << p[5] << _T(", ") << p[6] << _T(", ") << p[7] << _T(", ") << p[8] << _T(", ") << p[9] << _T(" };\n");
     tcout << _T("a[] = { ") << a[0] << _T(", ") << a[1] << _T(", ") << a[2] << _T(", ") << a[3] << _T(", ") << a[4] << _T(", ") << a[5] << _T(", ") << a[6] << _T(", ") << a[7] << _T(", ") << a[8] << _T(", ") << a[9] << _T(" };\n\n");
@@ -58,10 +62,12 @@ int _tmain(int argc, _TCHAR **argv, _TCHAR **envp)
     tcout << setw(len1) << _T("sizeof(p) = ") << setw(len2) << sizeof(p) << _T('\n');
     tcout << setw(len1) << _T("sizeof(a) = ") << setw(len2) << sizeof(a) << _T("\n\n");
 
+#ifdef USE_TCLASS
     if (p != nullptr)
     {
         delete p;
     }
+#endif
 
     tcout << _T("請按任意鍵繼續 . . . ") << flush;
     _gettch();
