@@ -10,7 +10,7 @@ set MACRO=%MACRO% /D _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_COUNT#1
 set CL=/nologo /std:c++latest /MTd %MACRO% /Wv:18 /Wall /WX /EHsc /Ox /errorReport:none
 set _CL_=TMain.cpp
 set _CL_=%_CL_% /link /WX /ERRORREPORT:none
-set INVOKE=TMain.exe 
+set INVOKE=TMain.exe
 :repeat
 cls
 cl.exe
